@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ServerHandler;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using net_labs;
 
 namespace ChatConsoleVersion
 {

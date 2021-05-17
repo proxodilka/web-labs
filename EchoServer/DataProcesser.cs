@@ -31,7 +31,7 @@ namespace Server
                     Log($"Can't receive data from remote because of the following error:\n{e.Message}");
                     return CONNECTION_CLOSED;
                 }
-                data += Encoding.UTF8.GetString(buffer, 0, size);
+                data += Encoding.Unicode.GetString(buffer, 0, size);
             } while (socket.Available > 0);
 
             return data;
@@ -56,7 +56,7 @@ namespace Server
                     Log($"Can't receive data from remote because of the following error:\n{e.Message}");
                     return CONNECTION_CLOSED;
                 }
-                data += Encoding.UTF8.GetString(buffer, 0, size);
+                data += Encoding.Unicode.GetString(buffer, 0, size);
             } while (socket.Available > 0);
 
             return data;
@@ -66,7 +66,7 @@ namespace Server
         {
             socket = socket == null ? this.socket : socket;
 
-            byte[] data = Encoding.UTF8.GetBytes(message);
+            byte[] data = Encoding.Unicode.GetBytes(message);
             try
             {
                 await socket.SendAsync(data, SocketFlags.None, cancellationToken);
@@ -83,7 +83,7 @@ namespace Server
         {
             socket = socket == null ? this.socket : socket;
 
-            byte[] data = Encoding.UTF8.GetBytes(message);
+            byte[] data = Encoding.Unicode.GetBytes(message);
             try
             {
                 socket.Send(data);
